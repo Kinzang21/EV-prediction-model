@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-
-
+from pathlib import Path
 # =========================================================
 # PAGE CONFIGURATION
 # =========================================================
@@ -158,7 +157,8 @@ st.markdown(
 
 @st.cache_resource
 def load_model():
-    return joblib.load("ev_model.pkl")
+    model_path = Path(__file__).parent / "ev_model.pkl"
+    return joblib.load(model_path)
 
 
 model = load_model()
